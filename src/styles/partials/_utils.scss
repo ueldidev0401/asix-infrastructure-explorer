@@ -1,0 +1,59 @@
+// Utility Mixins and Classes for global usage
+
+
+.flex-spacer {
+  flex: 1;
+}
+
+.hide {
+  display: none;
+}
+
+.text-danger{
+  color: $color-red;
+}
+.text-green{
+  color: $color-green;
+}
+.text-disabled{
+  color: $color-font-light;
+  cursor: not-allowed;
+}
+.text-grey {
+  color: $color-font-light;
+}
+.text-white {
+  color: $color-font-main;
+}
+
+@mixin flex($direction: row, $justify: flex-start, $align: center, $wrap: nowrap) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin row($justify: flex-start, $align: center, $wrap: nowrap) {
+  @include flex(row, $justify, $align, $wrap);
+}
+
+@mixin column($justify: flex-start, $align: center, $wrap: nowrap) {
+  @include flex(column, $justify, $align, $wrap);
+}
+
+
+@mixin backgroundImage($url: '', $size: contain, $xpos: center, $ypos: center) {
+  background-image: url($url);
+  background-position: $xpos $ypos;
+  background-repeat: no-repeat;
+  background-size: $size;
+}
+
+@mixin hideColumn() {
+  display:none;
+        width:0;
+        height:0;
+        opacity:0;
+        visibility: collapse;
+}
+

@@ -1,0 +1,112 @@
+
+// Font weights
+$weight-extra-light: 200;
+$weight-light: 300;
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semi: 600;
+$weight-bold: 700;
+ 
+// Base Font
+$font-title: 'Rift', 'Helvetica', sans-serif;
+$font-subtitle: 'Rift', 'Helvetica', sans-serif;
+$font-body: 'Alwyn', 'Helvetica', sans-serif;
+$line-height: 1.4;
+
+
+@font-face {
+    font-family: 'Rift';
+    src: url('../fonts/Rift-Bold.otf') format('otf'),
+         url('../fonts/Rift-Bold.woff') format('woff');
+    font-weight: $weight-bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rift';
+    src: url('../fonts/Rift-Demi.otf') format('otf'),
+         url('../fonts/Rift-Demi.woff') format('woff');
+    font-weight: $weight-semi;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rift';
+    src: url('../fonts/Rift-Medium.otf') format('otf'),
+         url('../fonts/Rift-Medium.woff') format('woff');
+    font-weight: $weight-medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rift';
+    src: url('../fonts/Rift-Regular.otf') format('otf'),
+         url('../fonts/Rift-Regular.woff') format('woff');
+    font-weight: $weight-regular;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rift';
+    src: url('../fonts/Rift-Light.otf') format('otf'),
+         url('../fonts/Rift-Light.woff') format('woff');
+    font-weight: $weight-light;
+    font-style: normal;
+}
+
+
+
+
+
+@font-face {
+    font-family: 'Alwyn';
+    src: url('../fonts/Alwyn-New-Bold.otf') format('otf'),
+         url('../fonts/Alwyn-New-Bold.woff') format('woff');
+    font-weight: $weight-bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alwyn';
+    src: url('../fonts/Alwyn-New-Medium.otf') format('otf'),
+         url('../fonts/Alwyn-New-Medium.woff') format('woff');
+    font-weight: $weight-semi;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alwyn';
+    src: url('../fonts/Alwyn-New-Medium.otf') format('otf'),
+         url('../fonts/Alwyn-New-Medium.woff') format('woff');
+    font-weight: $weight-medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alwyn';
+    src: url('../fonts/Alwyn-New-Regular.otf') format('otf'),
+         url('../fonts/Alwyn-New-Regular.woff') format('woff');
+    font-weight: $weight-regular;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alwyn';
+    src: url('../fonts/Alwyn-New-Light.otf') format('otf'),
+         url('../fonts/Alwyn-New-Light.woff') format('woff');
+    font-weight: $weight-light;
+    font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

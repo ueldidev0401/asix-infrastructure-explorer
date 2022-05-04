@@ -1,0 +1,225 @@
+.content.account {
+  table.details.account-txns {
+    margin-top: 2rem;
+    tbody th {
+      width: 200px;
+    }
+    tbody tr td div {
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .actions {
+    @include row($justify: flex-end);
+    border-top: 1px solid $color-font-light;
+    padding-top: 2rem;
+    .popup-content{
+      width: 330px !important;
+      background-color: $color-black !important;
+      color: $color-font-light;
+      padding: 10px !important;
+      .popup-row{
+        display: flex;
+        margin-bottom: 10px;
+        &.header{
+          display: block;
+          color: $color-white;
+          font-weight: bold;
+        }
+        &.err-msg{
+          color: $color-red;
+          padding-left: 30%;
+          &.disable{
+            display: none;
+          }
+        }
+        &.buttons{
+          display: flex;
+          justify-content: space-around;
+          .popup-reset{
+            width: 30%;
+            margin: 10px 0 0 0;
+            font-size: .875rem;
+            font-weight: $weight-semi;
+            color: $color-font-light;
+            cursor: pointer;
+            border: 1px solid $color-font-light;
+            text-align: center;
+            border-radius: 15px;
+          }
+          .popup-download{
+            width: 30%;
+            margin: 10px 0 0 0;
+            font-size: .875rem;
+            font-weight: $weight-semi;
+            color: $color-font-light;
+            cursor: pointer;
+            border: 1px solid $color-font-light;
+            text-align: center;
+            border-radius: 15px;
+          }
+          .popup-downloading{
+            width: 40%;
+            margin: 10px 0 0 0;
+            font-size: .875rem;
+            font-weight: $weight-semi;
+            color: $color-font-light;
+            text-align: center;
+          }
+        }
+        .disable{
+          display: none;
+        }
+      }
+      .popup-label{
+        width: 30%;
+        vertical-align: baseline;
+        margin: auto;
+      }
+      .popup-input{
+        width: 70%
+      }
+      .popup-arrow{
+        background-color: $color-black !important;
+        border-right: 1px solid $color-font-light;
+        border-bottom: 1px solid $color-font-light;
+      }
+    }
+    .download{
+      position: absolute;
+      left: 0;
+      color: $color-font-light;
+      cursor: pointer;
+      @include breakpoint('phablet', max) {
+        @include hideColumn();
+      }
+    }
+    .title{
+      position: absolute;
+      left: calc(50% - 44px)
+    }
+    .refresh {
+      cursor: pointer;
+      height: 100%;
+      width: 15px;
+      margin-right: 5px;
+      border-radius: 5px;
+      &:hover {
+        color: $color-green;
+      }
+    }
+    .filter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-font-light;
+      @include breakpoint('phablet', max) {
+        @include hideColumn();
+      }
+    }
+    .switch{
+      @include breakpoint('phablet', max) { display: none; }
+    }
+    .btn.tx {
+      font-size: .875rem;
+      font-weight: $weight-semi;
+      color: $color-font-light;
+      &.export{
+        display: flex;
+        &:before {
+          content: '';
+          display: inline-block;
+          position: relative;
+          width: 16px;
+          height: 16px;
+          margin-right: .375rem;
+          background-position: center center;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-image: url('/images/icons/icon-export@2x.png')
+        }
+      }
+    }
+  }
+
+  .account-info {
+    .value {
+      &.tooltip {
+        z-index: 100;
+        width: fit-content;
+        & .tooltip--text {
+          width: 280px;
+          visibility: hidden;
+          position: absolute;
+          z-index: 1;
+          background: #000000;
+          padding: 10px 0 10px 10px;
+          text-align: left;
+          line-height: 15px;
+          color: $color-font-light;
+          font-size: 12px;
+          bottom: calc(100% + 5px);
+          margin-left: -140px;
+          left: 50%;
+          &:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-color: #000000 transparent transparent transparent;
+            border-width: 5px;
+          }
+          & p {
+            margin: 0;
+          }
+        }
+        &:hover .tooltip--text {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  table.data.txn-table,
+  & > .loading-panel {
+    margin-top: 0rem;
+  }
+
+  @include breakpoint('tablet', max) {
+    table.details.account-txns {
+      tbody tr th {
+        content: 'Transactions';
+      }
+    }
+  }
+}
+
+.act.balance{
+  display: flex;
+  flex-direction: row;
+  .currency{
+    width: 50%;
+    display: flex;
+  }
+  @include breakpoint('phablet', max) {
+    flex-direction: column;
+    .currency{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
+.price{
+  margin-left: 5px;
+  color: $color-light;
+}
+#search_input {
+  &::placeholder {
+    color: $color-white;
+  }
+}

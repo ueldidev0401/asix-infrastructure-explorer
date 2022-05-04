@@ -1,0 +1,15 @@
+.chart{
+    position: relative;
+    width: 50%;
+    margin: 10px 25%;
+    cursor: pointer;
+    &.line{
+        width: 90%;
+        height: 110px;
+        margin: 5px 5%;
+    }
+    @include breakpoint('phablet', max) {
+        width: 130% !important;
+        margin: 10px 0 0 -15% !important;
+    }
+}

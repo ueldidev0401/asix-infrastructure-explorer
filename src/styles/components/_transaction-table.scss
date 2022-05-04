@@ -1,0 +1,188 @@
+table.data.txn-table {
+  // border-collapse: separate;
+  .none{
+    display: none;
+  }
+  thead tr .type {
+    &:before {
+      height: 1px;
+    }
+  }
+  tr .type {
+    color: $color-font-light;
+    white-space: nowrap;
+    width: 150px;
+    &:before {
+      content: '';
+      display: inline-block;
+      top: 4px;
+      position: relative;
+      width: 18px;
+      height: 18px;
+      margin-right: .5rem;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+  tr.coinbase .type:before { background-image: url('/images/icons/icon_coinbase@2x.png'); }
+  tr.transfer .type:before { background-image: url('/images/icons/icon_send@2x.png'); }
+  tr.service-payment .type:before { background-image: url('/images/icons/icon_servicepayment@2x.png'); }
+  tr.split-contract .type:before { background-image: url('/images/icons/icon_splitrule@2x.png'); }
+  tr.smart-contract .type:before { background-image: url('/images/icons/icon_smartcontract@2x.png'); }
+  tr.reserve .type:before { background-image: url('/images/icons/icon_reservefund@2x.png'); }
+  tr.release .type:before { background-image: url('/images/icons/icon_releasefund@2x.png'); }
+  tr.slash .type:before { background-image: url('/images/icons/icon_slash@2x.png'); }
+  tr.deposit-stake .type:before{ background-image: url('/images/icons/icon_deposit-stake-transaction@2x.png'); }
+  tr.withdraw-stake .type:before { background-image: url('/images/icons/icon_withdraw-stake-transaction@2x.png'); }
+  tr.update-validators .type:before { background-image: url('/images/icons/icon_updatevalidators@2x.png'); }
+  tr.stake-reward-distribution .type:before { background-image: url('/images/icons/icon_distribute-stake@2x.png'); }
+
+  td {
+    .value {
+      &.tooltip {
+        z-index: 100;
+        width: fit-content;
+        & .tooltip--text {
+          width: 280px;
+          visibility: hidden;
+          position: absolute;
+          z-index: 1;
+          background: #000000;
+          padding: 10px 0 10px 10px;
+          text-align: left;
+          line-height: 15px;
+          color: $color-font-light;
+          font-size: 12px;
+          bottom: calc(100% + 5px);
+          margin-left: -140px;
+          left: 50%;
+          &:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-color: #000000 transparent transparent transparent;
+            border-width: 5px;
+          }
+          & p {
+            margin: 0;
+          }
+        }
+        &:hover .tooltip--text {
+          visibility: visible;
+        }
+      }
+    }
+  }
+  td.age {
+    color: $color-font-light;
+    white-space: nowrap;
+  }
+
+  td.block {
+    color: $color-font-light;
+  }
+  td.token, th.token{
+    text-align: right;
+    &.left{
+      text-align: left;
+      padding-left: 0;
+    }
+  }
+  td.dim a, td.token{
+    color: $color-font-light;
+    & .tooltip{
+      z-index: 100;
+      &--text{
+        width: 200px;
+        visibility: hidden;
+        position: absolute;
+        z-index: 1;
+        background: $color-font-light;
+        border-radius: 6px;
+        padding: 8px 0 5px 10px;
+        text-align: left;
+        line-height: 15px;
+        color: $color-white;
+        font-size: 12px;
+  
+        bottom: calc(100% + 10px);
+        left: 50%;
+        margin-left: -105px;
+        &:after{
+          content: '';
+          position: absolute;
+          border-style: solid;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-color: $color-font-light transparent transparent transparent;
+          border-width: 5px;
+        }
+      }
+      &:hover .tooltip--text{
+          visibility: visible;
+      }
+    }
+  }
+  tr .icon {
+    &:before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      top: 2px;
+      width: 32px;
+      height: 20px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  tr .value{
+    @include breakpoint('phablet', max) {
+      .currency:before{
+        top: 0
+      }
+    }
+  }
+  tr .to.icon:before { background-image: url('/images/icons/stake-in@2x.png'); }
+
+  tr .from.icon:before { background-image: url('/images/icons/stake-out@2x.png'); }
+
+  tr .none.icon:before { 
+    width: 0;
+    height: 0;
+  }
+
+  @include breakpoint('tablet-wide', max) {
+    table-layout: fixed;
+    tr .age { @include hideColumn(); }
+    tr .block { width: 75px; }
+    thead th,
+    tbody td,
+    tbody th {
+      text-align: left;
+      padding: .5rem .5rem;
+      font-size: .875rem;
+    }
+  }
+  @include breakpoint('tablet-wide', max) {
+    tr .to { @include hideColumn(); }
+    tr .from { @include hideColumn(); }
+    tr .icon { @include hideColumn(); }
+    tr .type { width: 150px; }
+  }
+  @include breakpoint('phablet', max) {
+    tr .type:before { display: none; }
+    tr .type { 
+      white-space: normal; 
+      width: 110px; }
+  }
+  @include breakpoint('phone-wide', max) {
+    
+  }
+}

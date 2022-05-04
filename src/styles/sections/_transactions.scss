@@ -1,0 +1,379 @@
+
+.content.transactions {
+
+  
+}
+
+.content.transaction-details {
+  
+
+  .details-header {
+    @include row($justify: space-between, $align: flex-end);
+    padding: 3rem 1rem .75rem 0;
+    &.item {
+      padding-top: 0;
+    }
+    .txn-type {
+      font-family: $font-title;
+      font-weight: $weight-bold;
+      font-size: 1.125rem;
+      color: $color-font-main;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      &:before {
+        top: 3px;
+        margin-right: .75rem;
+      }
+    }
+    .btn.raw {
+      margin-bottom: .125rem;
+      color: $color-font-light;
+      font-weight: $weight-regular;
+    }
+  }
+  .coinbase-output {
+    @include row($align: flex-start);
+    border-bottom: 1px solid $color-line;
+    padding: .5rem 0;
+    &.single {
+      padding: 0;
+    }
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    & > *:first-child {
+      margin-right: 1rem;
+      white-space: nowrap;
+      min-width: 30%;
+      max-width: 50%;
+    }
+    & > a {
+      display: block;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
+    .currency{
+      @include breakpoint('phablet', max) { 
+        flex-wrap: wrap;
+      }
+      @include breakpoint('phone-small', max) { 
+        &:before{
+          display: none;
+        }
+      }
+    }
+  }
+  .txn-details {
+    .value {
+      &.tooltip {
+        z-index: 100;
+        width: fit-content;
+        & .tooltip--text {
+          width: 280px;
+          visibility: hidden;
+          position: absolute;
+          z-index: 1;
+          background: #000000;
+          padding: 10px 0 10px 10px;
+          text-align: left;
+          line-height: 15px;
+          color: $color-font-light;
+          font-size: 12px;
+          bottom: calc(100% + 5px);
+          margin-left: -140px;
+          left: 50%;
+          &:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-color: #000000 transparent transparent transparent;
+            border-width: 5px;
+          }
+          & p {
+            margin: 0;
+          }
+        }
+        &:hover .tooltip--text {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  
+}
+
+
+// In the global space since the icons are everywhere
+.txn-type {
+  &:before {
+    content: '';
+    display: inline-block;
+    top: 4px;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin-right: .5rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }  
+}
+  
+.txn-type.coinbase:before { background-image: url('/images/icons/icon_coinbase@2x.png'); }
+.txn-type.transfer:before { background-image: url('/images/icons/icon_send@2x.png'); }
+.txn-type.service-payment:before { background-image: url('/images/icons/icon_servicepayment@2x.png'); }
+.txn-type.split-contract:before { background-image: url('/images/icons/icon_splitrule@2x.png'); }
+.txn-type.smart-contract:before { background-image: url('/images/icons/icon_smartcontract@2x.png'); }
+.txn-type.reserve:before { background-image: url('/images/icons/icon_reservefund@2x.png'); }
+.txn-type.release:before { background-image: url('/images/icons/icon_releasefund@2x.png'); }
+.txn-type.slash:before { background-image: url('/images/icons/icon_slash@2x.png'); }
+.txn-type.deposit-stake:before { background-image: url('/images/icons/icon_deposit-stake-transaction@2x.png'); }
+.txn-type.withdraw-stake:before { background-image: url('/images/icons/icon_withdraw-stake-transaction@2x.png'); }
+.txn-type.stake-reward-distribution:before { background-image: url('/images/icons/icon_distribute-stake@2x.png'); }
+
+.txn-type.items:before { background-image: url('/images/icons/icon_items@2x.png'); }
+
+.txn-type.update-validators:before { background-image: url('/images/icons/icon_updatevalidators@2x.png'); }
+
+.sc-log {
+  &__data {
+    position: relative;
+    padding-right: 20%;
+    &--buttons {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 5px;
+      background-color: $color-black;
+      color: $color-font-light;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    &--button {
+      padding: 2px 5px;
+      &.active {
+        background-color: $color-line;
+        color: $color-font-main;
+      }
+      &.disabled {
+        cursor: not-allowed;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      &:first-child {
+        border-radius: 4px 0 0 4px;
+      }
+      &:last-child {
+        border-radius: 0 4px 4px 0;
+      }
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+.sc-items {
+  display: flex;
+  flex-flow: row wrap;
+}
+.sc-item {
+  background-color: rgba($color-font-light, 0.2);
+  border-radius: 5px;
+  margin: 17px;
+  padding: 25px;
+  max-width: 42%;
+  min-width: 460px;
+  display: flex;
+  margin-right: 10px;
+  &__column {
+    &:first-child {
+      margin-right: 28px;
+    }
+  }
+  &__row {
+    &:last-child {
+      margin-top: 5px;
+    }
+  }
+  &__image {
+    max-width: 140px;
+    @include breakpoint('tablet', max) {
+      width: 100%;
+    }
+  }
+  &__text {
+    color: $color-font-light;
+    display: flex;
+    flex-wrap: wrap;
+    &.name {
+      margin-bottom: 8px;
+      color: $color-white
+    }
+  }
+}
+.sc-value {
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 15px;
+  }
+  &__arrow {
+    color: $color-font-light;
+    margin: 0 5px;
+    &::before {
+      content: "\21B3";
+      font-size: 1.5rem;
+    }
+  }
+  &__address {
+    display: flex;
+    align-items: center;
+  }
+  &__text {
+    display: flex;
+    align-items: center;
+    color: $color-font-light;
+    margin-left: 5px;
+  }
+  & a {
+    margin: 0 5px;
+    width: 365px;
+    @media only screen and (max-width : 560px) {
+      width: auto;
+    }
+  }
+}
+
+.sc-topic {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  &:last-child{
+    margin-bottom: 0;
+  }
+
+  &__index {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    background-color: rgba($color-font-light, 0.2);
+    color: rgba($color-font-light, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-right: 5px;
+  }
+
+  &__select {
+    width: 44px;
+  }
+  &__arrow {
+    width: 20px;
+    margin-left: 5px;
+    &::before {
+      content: '\2794';
+    }
+  }
+}
+
+.sc-data {
+  width: 100%;
+
+  &__textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 5px;
+  }
+
+  &__select {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+
+    &--title {
+      color: $color-font-light;
+      font-size: 14px;
+      margin-right: 5px;
+    }
+  }
+}
+.token-transaffered-row {
+  color: $color-font-light;
+  display: flex;
+  flex-wrap: wrap;
+  & a{
+    margin: 0 10px;
+  }
+  & .currency {
+    margin-left: 10px;
+    color: white
+  }
+  & .text-container {
+    margin-left: 10px;
+    & .text-disabled.name {
+      margin: 0 5px;
+    }
+    & .token-link {
+      margin: 0 5px;
+      &__token-id {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.transaction-action-row {
+  color: $color-font-light;
+  & a {
+    margin: 0 10px;
+  }
+  &__token {
+    margin: 5px 0 0 10px;
+    &::before {
+      content: '\25CF';
+      padding-right: 10px;
+    }
+    & .token-link {
+      margin: 0 5px;
+    }
+    & a {
+      margin: 0;
+    }
+  }
+}
+
+table.sc-input-table {
+  width: 100%;
+  border-spacing: 0;
+  border-radius: 5px;
+  background-color: rgba($color-font-light, 0.2);
+
+  & thead tr th:first-child {
+    border-bottom: 1px solid $color-line;
+  }
+
+  & thead tr th:last-child {
+    width: 60%;
+  }
+
+  & tbody tr:last-child td {
+    width: auto;
+  }
+
+  & tbody tr td {
+    width: auto;
+    padding-left: 1rem;
+    border-top: 1px solid $color-line;
+  }
+}
